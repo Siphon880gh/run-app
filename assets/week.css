@@ -26,8 +26,8 @@ h1 span {
     position: fixed;
     bottom: 5px;
     right: 5px;
-    width: 100px;
-    height: 80px;
+    width: 130px;
+    height: 100px;
     z-index: 2;
     display: flex;
     justify-content: center;
@@ -35,8 +35,17 @@ h1 span {
     text-align: center;
     font-size: 2rem;
     background-color: white;
-    border-top-left-radius: 10px;
+    border-top-left-radius: 20px;
     border: 1px solid rgba(125, 125, 125, 0.5);
+}
+
+.position-corner .global-timer {
+    width: 80%;
+    border-bottom: 1px solid rgba(125, 125, 125, 0.5);
+    margin: 0 auto;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    font-size: 1rem;
 }
 
 .position-corner .fa {

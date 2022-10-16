@@ -1,3 +1,5 @@
+window.isPlaying = true;
+
 $(()=>{
 
     // UIUX Toggleable corner play/pause
@@ -16,4 +18,6 @@ $(()=>{
         el.innerText = countNumeral;
         countNumeral++;
     });
+
+    // Countup
 })
