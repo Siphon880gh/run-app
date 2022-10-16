@@ -60,8 +60,15 @@ $(()=>{
         
         if(window.elapsed <= window.matrixR[window.atPhase]) { 
         // eg. 1 < 30 when 1 second elapsed at first row accuulated 30 seconds planned
-
-            $(".phase-timemark .local-timer").eq(window.atPhase).text( utils.toHHMMSS(window.elapsed) );
+            var localTime = window.elapsed;
+            // if(window.atPhase>1) window.elapsed -= ((reduces)=>{
+            //     let willSubtract = 0;
+            //     for(i=window.atPhase; i>=0; i--) {
+            //         willSubtract += window.matrixR[i];
+            //     }
+            // })(window.matrixR);
+            if(window.atPhase>=1) localTime -= window.matrixR[atPhase-1]; 
+            $(".phase-timemark .local-timer").eq(window.atPhase).text( utils.toHHMMSS(localTime) );
 
         } else {
             // Move to next phase
