@@ -7,7 +7,7 @@
 
 :page_facing_up: Description:
 ---
-By Weng Fei Fung. I feel inspired to tackle a 3mile run, and I need to make a running app that I can control in the next few hours before I lose that motivation.
+By Weng Fei Fung. I feel inspired to tackle a 3 mile run, and I need to make a running app that I can control in the next few hours before I lose that motivation.
 
 :open_file_folder: Table of Contents:
 ---
@@ -22,7 +22,7 @@ By Weng Fei Fung. I feel inspired to tackle a 3mile run, and I need to make a ru
 
 :camera: Preview:
 ---
-![image](https://via.placeholder.com/600x400)
+![image](//via.placeholder.com/600x400)
 
 ## :minidisc: Installation and Usage:
 Run as a HTML file. No needed hands-on setup. Your running goals and tasks are saved on your device, preferably on the same phone you bring with you on your runs.
