@@ -23,3 +23,20 @@ h1 span {
     line-height: var(--row-height);
     font-size: 2rem;
 }
+
+.position-corner {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    width: 100px;
+    height: 80px;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    flex-flow: column nowrap;
+    text-align: center;
+    font-size: 2rem;
+    background-color: white;
+    border-top-left-radius: 10px;
+    border: 1px solid rgba(125, 125, 125, 0.5);
+}
