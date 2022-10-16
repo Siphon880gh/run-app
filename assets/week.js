@@ -22,8 +22,10 @@ $(()=>{
         const $fa = $(event.target);
         if($fa.hasClass("fa-pause")) {
             $fa.removeClass("fa-pause").addClass("fa-play");
+            window.isPlaying = false;
         } else {
             $fa.removeClass("fa-play").addClass("fa-pause");
+            window.isPlaying = true;
         }
     })
 
@@ -50,6 +52,8 @@ $(()=>{
     // Countup
     $(".phase").eq(0).addClass("active")
     window.poller = setInterval(()=>{
+        if(!window.isPlaying) return;
+
         // Global
         const newHHMMSS= utils.toHHMMSS(window.elapsed);
         $(".global-timer").text(newHHMMSS);
