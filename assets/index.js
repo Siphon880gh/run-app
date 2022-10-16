@@ -21,7 +21,16 @@ function updateLinethroughs() {
     // function test() {
     //     console.assert()
     // }
-}
+
+   $(".programs .text-decoration-line-through").removeClass("text-decoration-line-through");
+
+    $(".programs input[type='checkbox']").each((i, el)=> { 
+        const isChecked = el.checked;
+        if(isChecked) {
+            el.nextElementSibling.classList.add("text-decoration-line-through")
+        }
+    });
+} // updateLinethroughs
 
 $(()=>{
     // function testSetup(functionName) {
