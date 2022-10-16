@@ -1,0 +1,11 @@
+h2 {
+    font-size: calc(1.125rem + .9vw)
+}
+
+h3 {
+    font-size: calc(1rem + .9vw)
+}
+
+.programs li {
+    list-style: none;
+}
