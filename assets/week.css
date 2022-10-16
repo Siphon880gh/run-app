@@ -40,3 +40,11 @@ h1 span {
     border-top-left-radius: 10px;
     border: 1px solid rgba(125, 125, 125, 0.5);
 }
+
+.position-corner .fa {
+    cursor: pointer;
+}
+
+.position-corner .fa:hover {
+    color: yellowgreen;
+}
