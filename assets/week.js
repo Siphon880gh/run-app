@@ -57,30 +57,29 @@ $(()=>{
         // Global
         const newHHMMSS= utils.toHHMMSS(window.elapsed);
         $(".global-timer").text(newHHMMSS);
+
+        var localTime = window.elapsed;
+        if(window.atPhase>=1) localTime -= window.matrixR[atPhase-1]; 
+        $(".phase-timemark .local-timer").eq(window.atPhase).text( utils.toHHMMSS(localTime) );
         
-        if(window.elapsed <= window.matrixR[window.atPhase]) { 
+
+        if(window.elapsed < window.matrixR[window.atPhase]) { 
         // eg. 1 < 30 when 1 second elapsed at first row accuulated 30 seconds planned
-            var localTime = window.elapsed;
-            // if(window.atPhase>1) window.elapsed -= ((reduces)=>{
-            //     let willSubtract = 0;
-            //     for(i=window.atPhase; i>=0; i--) {
-            //         willSubtract += window.matrixR[i];
-            //     }
-            // })(window.matrixR);
-            if(window.atPhase>=1) localTime -= window.matrixR[atPhase-1]; 
-            $(".phase-timemark .local-timer").eq(window.atPhase).text( utils.toHHMMSS(localTime) );
 
         } else {
             // Move to next phase
             if(typeof window.matrixR[window.atPhase+1] !== "undefined") {
-                // TODO: Test this
+                // Test this
                 window.atPhase++;
-                $(".phase").removeClass("active")
+                // setTimeout(()=> { $(".phase").removeClass("active") }, 500);
+                setTimeout(()=> { $(".phase").eq(window.atPhase-1).removeClass("active") }, 100);
                 $(".phase").eq(window.atPhase).addClass("active")
             } else {
                 // TODO: Finished
             }
         }
+
+        
 
         window.elapsed++;
     }, 1000)
