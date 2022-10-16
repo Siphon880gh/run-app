@@ -14,14 +14,12 @@ h1 span {
     height: var(--row-height);
 }
 
-.phases .phase-at {
+.phase-numeral,
+.phase-at,
+.phase-type,
+.phase-timemark {
     line-height: var(--row-height);
-    font-size: 2rem;
-}
-
-.phases .phase-timemark {
-    line-height: var(--row-height);
-    font-size: 2rem;
+    font-size: 1.7rem;
 }
 
 .position-corner {
