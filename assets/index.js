@@ -1,4 +1,9 @@
 // Todo: Create a store to track state of checkboxes so you don't repeatedly query for checkboxes
+// Todo: Call updateLinethroughs whenever state changes instead of manually at different points of the app
+
+const utils = {
+    doesIndexExist: (index, arr) => typeof arr[index] !== "undefined"
+}
 
 function saveCheckmarks() {
     // console.log("Called saveCheckmarks");
@@ -12,7 +17,8 @@ function saveCheckmarks() {
     // }
     // test();
 
-    const checkState = $(".programs input[type='checkbox']").map((i, el)=> $(el).prop("checked") ? 1 : 0 ).toArray();
+    let checkState = $(".programs input[type='checkbox']").map((i, el)=> $(el).prop("checked") ? 1 : 0 ).toArray();
+    checkState = JSON.stringify(checkState)
     localStorage.setItem("RunApp__checks", checkState);
 }
 
@@ -40,13 +46,30 @@ $(()=>{
     // }
     // testSetup("saveCheckmarks");
 
-    // UI UI: Clicking the week number also checks it off
+    // UIUX: Clicking the week number also checks it off
     $(".programs li > span").on("click", (event) => {
         const cb = event.target.previousElementSibling;
-        cb.checked = !cb.checked;
+        cb.checked = !cb.checked; // Insufficient to trigger input change event
         $(cb).trigger("change");
+        updateLinethroughs();
     })
 
+    // Previously checked weeks from localStorage
+    let checkState = localStorage.getItem("RunApp__checks");
+    checkState = JSON.parse(checkState);
+    if(checkState) {
+        // Previous checked weeks may save more or less than there are weeks on the page if your adjusted your programs, so fail gracefully
+        $(".programs input[type='checkbox']").each((i, el)=> { 
+            // console.log({i, checkState, el, eval: utils.doesIndexExist(i, checkState) })
+            if(utils.doesIndexExist(i, checkState)) {
+                if(checkState[i]===1)
+                    el.checked = true;
+            }
+        });
+        updateLinethroughs();
+    }
+
+    // When checks a week...
     $(".programs input[type='checkbox']").on("change", (event)=> { 
         event.preventDefault();
         event.stopPropagation();
