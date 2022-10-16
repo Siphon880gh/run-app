@@ -8,4 +8,9 @@ h3 {
 
 .programs li {
     list-style: none;
+    line-height: 1.9rem;
+}
+
+.programs li a {
+    text-decoration: none;
 }
