@@ -55,3 +55,7 @@ h1 span {
 .position-corner .fa:hover {
     color: yellowgreen;
 }
+
+.phase.active {
+    background-color: #4ebc09;
+}

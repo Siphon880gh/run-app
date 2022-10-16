@@ -1,8 +1,9 @@
 window.isPlaying = true;
 window.elapsed = 0;
 window.poller = null;
-window.matrix1 = [];
-window.matrix2 = [];
+window.matrixR = []; // matrix Reduced
+window.matrixP = []; // matrix Phase
+window.atPhase = 0;
 
 var utils = {
     toHHMMSS: (secs) => {
@@ -35,7 +36,7 @@ $(()=>{
 
     // Prepare matrix that keeps track which phase should play next from the global timer
     let reducer = 0;
-    window.matrix1 = $(".phase-timemark .planned").map((i, el)=> {  
+    window.matrixR = $(".phase-timemark .planned").map((i, el)=> {  
         let currentVal = parseFloat(el.innerText); 
         let multiplier = el.innerText.includes("m")?60: (el.innerText.includes("h")?360:1)
         currentVal *= multiplier;
@@ -43,14 +44,32 @@ $(()=>{
         return reducer; 
     }).toArray();
     
-    window.matrix2 = $(".phase-timemark .planned").map((i, el)=> 0).toArray();
-    if(typeof window.matrix2[0] !== "undefined") window.matrix2[0] = 1;
+    window.matrixP = $(".phase-timemark .planned").map((i, el)=> 0).toArray();
+    if(typeof window.matrixP[0] !== "undefined") window.matrixP = [1];
 
     // Countup
+    $(".phase").eq(0).addClass("active")
     window.poller = setInterval(()=>{
         // Global
         const newHHMMSS= utils.toHHMMSS(window.elapsed);
         $(".global-timer").text(newHHMMSS);
+        
+        if(window.elapsed <= window.matrixR[window.atPhase]) { 
+        // eg. 1 < 30 when 1 second elapsed at first row accuulated 30 seconds planned
+
+            $(".phase-timemark .local-timer").eq(window.atPhase).text( utils.toHHMMSS(window.elapsed) );
+
+        } else {
+            // Move to next phase
+            if(typeof window.matrixR[window.atPhase+1] !== "undefined") {
+                // TODO: Test this
+                window.atPhase++;
+                $(".phase").removeClass("active")
+                $(".phase").eq(window.atPhase).addClass("active")
+            } else {
+                // TODO: Finished
+            }
+        }
 
         window.elapsed++;
     }, 1000)
