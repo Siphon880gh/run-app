@@ -1,0 +1,25 @@
+:root {
+    --row-height: 100px;
+}
+
+h1 mark {
+    font-weight: 900;
+}
+
+h1 span {
+    font-weight: 300;
+}
+
+.phases .row {
+    height: var(--row-height);
+}
+
+.phases .phase-at {
+    line-height: var(--row-height);
+    font-size: 2rem;
+}
+
+.phases .phase-timemark {
+    line-height: var(--row-height);
+    font-size: 2rem;
+}
