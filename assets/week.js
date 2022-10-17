@@ -18,6 +18,15 @@ var utils = {
 
 $(()=>{
 
+    // Render Handlebars
+    (()=>{
+        let parameterizedTemplate = Handlebars.compile($("#template-week").html())
+        let templateParams = {...heading, intervals};
+        let html = parameterizedTemplate(templateParams);
+        
+        $(".container").prepend(html);
+    })();
+
     // UIUX Toggleable corner play/pause
     $(".position-corner .fa").on("click", (event)=>{
         const $fa = $(event.target);

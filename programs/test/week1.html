@@ -10,49 +10,52 @@
     <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../bower_components/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="../../assets/week.css">
+
+    <script id="data">
+        const heading = {
+            programName: "Test",
+            slot: "Week 1",
+        }
+        const intervals = [{
+            type: "Run",
+            time: "3s"
+        }, {
+            type: "Run",
+            time: "2s"
+        }, {
+            type: "Run",
+            time: "1s"
+        }, ];
+    </script>
+
+    <script id="template-week" type="template">
+        <header class="pt-1 pb-3">
+            <h1><mark>{{programName}}</mark><span> - </span><span>{{slot}}</span></h1>
+        </header>
+        <main class="phases gy-5">
+            {{#each intervals}}
+            <article class="phase row vy-5 border border-danger mb-3 height-200">
+                <div class="phase-numeral col-1 col-sm-1"></div>
+                <div class="phase-at col-1 col-sm-1 invisible">*</div>
+                <div class="phase-type col-1 col-sm-1">Run</div>
+                <div class="phase-timemark col-8 col-sm-8 text-center">
+                    <span class="local-timer"></span>
+                    <span> / </span>
+                    <span class="planned">3s</span>
+                </div>
+            </article>
+            {{/each}}
+        </main>
+        <aside class="position-corner">
+            <div class="global-timer">00:00:00</div>
+            <i class="fa fa-pause"></i>
+        </aside>
+    </script>
 </head>
 
 <body class="container">
-    <header class="pt-1 pb-3">
-        <h1><mark>Test</mark><span> - </span><span>Week 1</span></h1>
-    </header>
-    <main class="phases gy-5">
-        <article class="phase row vy-5 border border-danger mb-3 height-200">
-            <div class="phase-numeral col-1 col-sm-1"></div>
-            <div class="phase-at col-1 col-sm-1 invisible">*</div>
-            <div class="phase-type col-1 col-sm-1">Run</div>
-            <div class="phase-timemark col-8 col-sm-8 text-center">
-                <span class="local-timer"></span>
-                <span> / </span>
-                <span class="planned">3s</span>
-            </div>
-        </article>
-        <article class="phase row vy-5 border border-danger mb-3 height-200">
-            <div class="phase-numeral col-1 col-sm-1"></div>
-            <div class="phase-at col-1 col-sm-1 invisible">*</div>
-            <div class="phase-type col-1 col-sm-1">Walk</div>
-            <div class="phase-timemark col-8 col-sm-8 text-center">
-                <span class="local-timer"></span>
-                <span> / </span>
-                <span class="planned">2sec</span>
-            </div>
-        </article>
-        <article class="phase row vy-5 border border-danger mb-3 height-200">
-            <div class="phase-numeral col-1 col-sm-1"></div>
-            <div class="phase-at col-1 col-sm-1 invisible">*</div>
-            <div class="phase-type col-1 col-sm-1">Run</div>
-            <div class="phase-timemark col-8 col-sm-8 text-center">
-                <span class="local-timer"></span>
-                <span> / </span>
-                <span class="planned">3secs</span>
-            </div>
-        </article>
-    </main>
-    <aside class="position-corner">
-        <div class="global-timer">00:00:00</div>
-        <i class="fa fa-pause"></i>
-    </aside>
 
+    <script src="../../bower_components/handlebars/handlebars.min.js"></script>
     <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../../assets/week.js"></script>
