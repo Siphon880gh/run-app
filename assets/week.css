@@ -2,12 +2,22 @@
     --row-height: 100px;
 }
 
+@font-face {
+    font-family: "Montserrat";
+    src: url(fonts/Montserrat/Montserrat-VariableFont_wght.ttf);
+}
+
+body {
+    padding-top: 30px;
+    font-family: "Montserrat";
+}
+
 h1 mark {
-    font-weight: 900;
+    font-weight: 600;
 }
 
 h1 span {
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .phases .row {
@@ -59,3 +69,5 @@ h1 span {
 .phase.active {
     background-color: #4ebc09;
 }
+
+body {}
