@@ -10,11 +10,13 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="assets/index.css">
-
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="docs/force-pwa.png">
+    <meta name="theme-color" content="#808080" />
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <header class="mb-4 text-center">
             <h1>Run Programs <i class="fa-solid fa-person-running"></i></h1>
             <i>By Weng Fei Fung</i>
@@ -27,7 +29,7 @@
                         alt="Youtube" data-canonical-src="https://img.shields.io/badge/Youtube-red?style=flat&amp;logo=youtube&amp;labelColor=red" style="max-width:10ch;"></a>
             </section>
         </header>
-        <main class="programs row gx-5">
+        <main class="programs gx-5">
             <!-- When you have more than one program, then use col-sm-6
                  When only one program, then use col-sm-6-off
                  When you upgrade jQuery to React, then use conditional rendering
@@ -131,6 +133,14 @@
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/index.js"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js', {
+                scope: 'https://siphon880gh.github.io/run-app/'
+            });
+        }
+    </script>
 </body>
 
 </html>

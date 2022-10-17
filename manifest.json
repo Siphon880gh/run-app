@@ -1,0 +1,62 @@
+{
+    "lang": "en-us",
+    "name": "Runs App",
+    "short_name": "runs-app",
+    "description": "These are ready-to-go apps inside your web browser to train for running, 5k, 10k, and marathons.",
+    "start_url": "https://siphon880gh.github.io/run-app/",
+    "scope": "https://siphon880gh.github.io/run-app/",
+    "background_color": "#2f3d58",
+    "theme_color": "#2f3d58",
+    "orientation": "any",
+    "display": "standalone",
+    "icons": [{
+            "src": "docs/force-pwa.png",
+            "sizes": "36x36",
+            "type": "image/png",
+            "purpose": "any",
+            "density": 0.75
+        },
+        {
+            "src": "docs/force-pwa.png",
+            "sizes": "48x48",
+            "type": "image/png",
+            "purpose": "any",
+            "density": 1.0
+        },
+        {
+            "src": "docs/force-pwa.png",
+            "sizes": "72x72",
+            "type": "image/png",
+            "purpose": "any",
+            "density": 1.5
+        },
+        {
+            "src": "docs/force-pwa.png",
+            "sizes": "96x96",
+            "type": "image/png",
+            "purpose": "any",
+            "density": 2.0
+        },
+        {
+            "src": "docs/force-pwa.png",
+            "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "maskable",
+            "density": 3.0
+        },
+        {
+            "src": "docs/force-pwa.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any",
+            "density": 4.0
+        },
+        {
+            "src": "docs/force-pwa.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any",
+            "density": 4.0
+        }
+    ]
+}
