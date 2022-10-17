@@ -32,6 +32,16 @@ h1 span {
     font-size: 1.7rem;
 }
 
+@media screen AND (max-width: 768px) {
+    .phase-numeral,
+    .phase-at,
+    .phase-type,
+    .phase-timemark {
+        line-height: var(--row-height);
+        font-size: 1rem;
+    }
+}
+
 .position-corner {
     position: fixed;
     bottom: 5px;
