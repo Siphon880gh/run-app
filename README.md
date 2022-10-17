@@ -22,7 +22,9 @@ By Weng Fei Fung. I feel inspired to tackle a 3 mile run, and I need to make a r
 
 :camera: Preview:
 ---
-![image](//via.placeholder.com/600x400)
+![image](/docs/weeks.png)
+
+![image](/docs/week.png)
 
 ## :minidisc: Installation and Usage:
 Run as a HTML file. No needed hands-on setup. Your running goals and tasks are saved on your device, preferably on the same phone you bring with you on your runs.
