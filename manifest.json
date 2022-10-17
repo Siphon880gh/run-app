@@ -9,6 +9,11 @@
     "theme_color": "#2f3d58",
     "orientation": "any",
     "display": "standalone",
+    "prefer_related_applications": true,
+    "related_applications": [{
+        "platform": "play",
+        "id": "com.google.samples.apps.iosched"
+    }],
     "icons": [{
             "src": "docs/force-pwa.png",
             "sizes": "36x36",
