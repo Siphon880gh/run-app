@@ -59,6 +59,27 @@ $(()=>{
     window.matrixP = $(".phase-timemark .planned").map((i, el)=> 0).toArray();
     if(typeof window.matrixP[0] !== "undefined") window.matrixP = [1];
 
+    // Dynamic colors
+    setInterval(()=>{
+        let currentType = $(".phase-type").eq(window.atPhase).text().toLowerCase();
+        let failedMatch = true;
+        if(colorOnTypeWildcard) {
+            for(key in colorOnTypeWildcard) {
+                let matchedRule = key.toLowerCase().includes(currentType)
+                if(matchedRule) {
+                    const bgColor = colorOnTypeWildcard[key];
+                    $("style#dynamic-colors").html(`.phase.active { background-color: ${bgColor}; } `);
+                    failedMatch = false;
+                    break;
+                } // if
+            } // for
+        } // if
+        if(failedMatch) {
+            let bgColor = "#4ebc09"
+            $("style#dynamic-colors").html(`.phase.active { background-color: ${bgColor}; } `);
+        }
+    }, 100);
+
     // Countup
     $(".phase").eq(0).addClass("active")
     window.poller = setInterval(()=>{
@@ -76,6 +97,7 @@ $(()=>{
         if(window.elapsed < window.matrixR[window.atPhase]) { 
         // eg. 1 < 30 when 1 second elapsed at first row accuulated 30 seconds planned
 
+        
         } else {
             // Move to next phase
             if(typeof window.matrixR[window.atPhase+1] !== "undefined") {
@@ -84,6 +106,7 @@ $(()=>{
                 // setTimeout(()=> { $(".phase").removeClass("active") }, 500);
                 setTimeout(()=> { $(".phase").eq(window.atPhase-1).removeClass("active") }, 100);
                 $(".phase").eq(window.atPhase).addClass("active")
+                
             } else {
                 window.isFinished = true;
                 $(".phases").append(`<footer class="conclusion text-center text-white p-5 mb-4 rounded-3">

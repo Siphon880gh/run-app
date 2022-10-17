@@ -22,20 +22,21 @@
             walk: "rgba(13,202,240,1)",
         }
         const intervals = [{
-            type: "Run",
+            type: "Walk",
             time: "3s"
         }, {
-            type: "Run",
-            time: "2s"
+            type: "Jog",
+            time: "4s"
         }, {
             type: "Run",
-            time: "1s"
+            time: "3s"
         }, ];
     </script>
 
     <style id="dynamic-colors">
         .phase.active {
-            background-color: #4ebc09;
+            background-color: transparent;
+            /* Keep transparent to avoid flash of color */
         }
     </style>
 
@@ -48,11 +49,11 @@
             <article class="phase row vy-5 border border-danger mb-3 height-200">
                 <div class="phase-numeral col-1 col-sm-1"></div>
                 <div class="phase-at col-1 col-sm-1 invisible">*</div>
-                <div class="phase-type col-1 col-sm-1">Run</div>
+                <div class="phase-type col-1 col-sm-1">{{type}}</div>
                 <div class="phase-timemark col-8 col-sm-8 text-center">
                     <span class="local-timer"></span>
                     <span> / </span>
-                    <span class="planned">3s</span>
+                    <span class="planned">{{time}}</span>
                 </div>
             </article>
             {{/each}}
