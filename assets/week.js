@@ -1,4 +1,5 @@
 window.isPlaying = true;
+window.isFinished = false;
 window.elapsed = 0;
 window.poller = null;
 window.matrixR = []; // matrix Reduced
@@ -52,7 +53,7 @@ $(()=>{
     // Countup
     $(".phase").eq(0).addClass("active")
     window.poller = setInterval(()=>{
-        if(!window.isPlaying) return;
+        if(!window.isPlaying || window.isFinished) return;
 
         // Global
         const newHHMMSS= utils.toHHMMSS(window.elapsed);
@@ -75,7 +76,11 @@ $(()=>{
                 setTimeout(()=> { $(".phase").eq(window.atPhase-1).removeClass("active") }, 100);
                 $(".phase").eq(window.atPhase).addClass("active")
             } else {
-                // TODO: Finished
+                window.isFinished = true;
+                $(".phases").append(`<footer class="conclusion text-center text-white p-5 mb-4 rounded-3 border-info bg-info">
+                    Congratulations! You finished today's training! Go back to <a href='../../'>weeks<a>.               
+                </footer>`);
+                // window.navigation.back();
             }
         }
 
