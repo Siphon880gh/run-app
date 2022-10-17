@@ -86,7 +86,7 @@ $(()=>{
                 $(".phase").eq(window.atPhase).addClass("active")
             } else {
                 window.isFinished = true;
-                $(".phases").append(`<footer class="conclusion text-center text-white p-5 mb-4 rounded-3 border-info bg-info">
+                $(".phases").append(`<footer class="conclusion text-center text-white p-5 mb-4 rounded-3">
                     Congratulations! You finished today's training! Go back to <a href='../../'>weeks<a>.               
                 </footer>`);
                 // window.navigation.back();

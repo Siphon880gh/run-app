@@ -66,8 +66,8 @@ h1 span {
     color: yellowgreen;
 }
 
-.phase.active {
-    background-color: #4ebc09;
+.conclusion {
+    /** Imperial Red **/
+    border: 2px solid black;
+    background-color: rgba(237, 41, 57, 1);
 }
-
-body {}

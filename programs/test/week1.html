@@ -16,6 +16,11 @@
             programName: "Test",
             slot: "Week 1",
         }
+        const colorOnTypeWildcard = {
+            run: "#4ebc09",
+            jog: "#ffcc00",
+            walk: "rgba(13,202,240,1)",
+        }
         const intervals = [{
             type: "Run",
             time: "3s"
@@ -27,6 +32,12 @@
             time: "1s"
         }, ];
     </script>
+
+    <style id="dynamic-colors">
+        .phase.active {
+            background-color: #4ebc09;
+        }
+    </style>
 
     <script id="template-week" type="template">
         <header class="pt-1 pb-3">
