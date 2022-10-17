@@ -26,8 +26,12 @@ By Weng Fei Fung. I feel inspired to tackle a 3 mile run, and I need to make a r
 
 ![image](/docs/week.png)
 
-## :minidisc: Installation and Usage:
+## :minidisc: Installation and Advance Use:
 Run as a HTML file. No needed hands-on setup. Your running goals and tasks are saved on your device, preferably on the same phone you bring with you on your runs.
+
+If you want to tweak the weeks and interval. How it works is index.html is just pure HTML that links to programs/_program_/week#.html. That's just a convention to keep things structured. You can add HTML as you like and structure the folders/files of program and weeks however you want. 
+
+At the actual week HTML file, notice there's Javascript mixed into the HTML. This was done purposely so you can create as many weeks as possible without linking to new JS files. Anyhow, you can just edit the intervals array with the desire time and the desire type of run (walk, jog, run). The type can really be any word. You can change the color of the active interval at colorOnTypeWildcard object using hex, rgba, rgb, or color; this object's keys are just partial searches of the type; so you can have different colors for run, walk, jog, or whatever word you use.
 
 ## :crystal_ball: Future version
 - Further customization by the user rather than having to code it. So will upgrade from jQuery (great for rapid development) to React (more maintenable and scalable).
