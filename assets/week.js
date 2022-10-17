@@ -33,9 +33,12 @@ $(()=>{
         if($fa.hasClass("fa-pause")) {
             $fa.removeClass("fa-pause").addClass("fa-play");
             window.isPlaying = false;
+            const totalTime = window.matrixR[window.matrixR.length-1];
+            $(".global-timer").addClass("text-muted").text(utils.toHHMMSS( totalTime ))
         } else {
             $fa.removeClass("fa-play").addClass("fa-pause");
             window.isPlaying = true;
+            $(".global-timer").removeClass("text-muted")
         }
     })
 
