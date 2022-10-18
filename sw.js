@@ -1,4 +1,4 @@
-const CACHE_NAME = `runs-app-cache-v4`;
+const CACHE_NAME = `runs-app-cache-v5`;
 
 // Use the install event to pre-cache all initial resources.
 self.addEventListener('install', event => {
