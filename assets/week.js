@@ -1,10 +1,13 @@
 window.isPlaying = true;
 window.isFinished = false;
 window.elapsed = 0;
+window.elapsedLocally = 0; // at the phase
 window.poller = null;
 window.matrixR = []; // matrix Reduced
 window.matrixP = []; // matrix Phase
 window.atPhase = 0;
+
+window.wantToReset = false;
 
 var utils = {
     toHHMMSS: (secs) => {
@@ -94,12 +97,21 @@ $(()=>{
 
         var localTime = window.elapsed;
         if(window.atPhase>=1) localTime -= window.matrixR[atPhase-1]; 
-        $(".phase-timemark .local-timer").eq(window.atPhase).text( utils.toHHMMSS(localTime) );
-        
+        window.elapsedLocally++;
 
+        $(".phase-timemark .local-timer").eq(window.atPhase).text( utils.toHHMMSS(localTime) );
+        console.log({elapsed,localTime,matrixP:window.matrixP[0]})
+        console.log(wantToReset)
+        
         if(window.elapsed < window.matrixR[window.atPhase]) { 
         // eg. 1 < 30 when 1 second elapsed at first row accuulated 30 seconds planned
-
+            if(window.wantToReset) {
+                if(window.elapsedLocally>0) {
+                    window.elapsed-=window.elapsedLocally;
+                    window.elapsedLocally = 0;
+                }
+                window.wantToReset = false;
+            }
         
         } else {
             // Move to next phase
@@ -109,8 +121,10 @@ $(()=>{
                 // setTimeout(()=> { $(".phase").removeClass("active") }, 500);
                 setTimeout(()=> { $(".phase").eq(window.atPhase-1).removeClass("active") }, 100);
                 $(".phase").eq(window.atPhase).addClass("active")
+                window.elapsedLocally = 0;
                 
             } else {
+                $(".phase.active").removeClass("active");
                 window.isFinished = true;
                 $(".phases").append(`<footer class="conclusion text-center text-white p-5 mb-4 rounded-3">
                     Congratulations! You finished today's training! Go back to <a href='../../'>weeks<a>.               
@@ -123,4 +137,22 @@ $(()=>{
 
         window.elapsed++;
     }, 1000)
+})
+
+function clickToReset(event) {
+    if(!event.target.matches(".phase")) {
+        event.target = event.target.closest(".phase")
+    }
+    // console.log(event.target)
+    if($(event.target).hasClass("active"))
+        window.wantToReset = true;
+
+    // Throttle clicking multiple times in a row that would've caused timer to go negative
+    $(".phase").off("click");
+    setTimeout(()=>{
+        $(".phase").on("click", clickToReset);
+    }, 1500); 
+}
+$(()=>{
+    $(".phase").on("click", clickToReset);
 })
