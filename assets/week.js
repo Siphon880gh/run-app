@@ -95,6 +95,16 @@ $(()=>{
         const newHHMMSS= utils.toHHMMSS(window.elapsed);
         $(".global-timer").text(newHHMMSS);
 
+
+        if(window.wantToReset) {
+            if(window.elapsedLocally>0) {
+                window.elapsed-=window.elapsedLocally;
+                window.elapsedLocally = 0;
+            }
+            window.wantToReset = false;
+            $(".restarting").removeClass("restarting")
+        }
+
         var localTime = window.elapsed;
         if(window.atPhase>=1) localTime -= window.matrixR[atPhase-1]; 
         window.elapsedLocally++;
@@ -105,14 +115,9 @@ $(()=>{
         
         if(window.elapsed < window.matrixR[window.atPhase]) { 
         // eg. 1 < 30 when 1 second elapsed at first row accuulated 30 seconds planned
-            if(window.wantToReset) {
-                if(window.elapsedLocally>0) {
-                    window.elapsed-=window.elapsedLocally;
-                    window.elapsedLocally = 0;
-                }
-                window.wantToReset = false;
-                $(".restarting").removeClass("restarting")
-            }
+
+            if(window.elapsed > (window.matrixR[window.atPhase])-3)
+                $(".phase").eq(window.atPhase).addClass("font-weight-bold");
         
         } else {
             // Move to next phase
@@ -120,12 +125,12 @@ $(()=>{
                 // Test this
                 window.atPhase++;
                 // setTimeout(()=> { $(".phase").removeClass("active") }, 500);
-                setTimeout(()=> { $(".phase").eq(window.atPhase-1).removeClass("active") }, 100);
+                setTimeout(()=> { $(".phase").eq(window.atPhase-1).removeClass("active").removeClass("font-weight-bold") }, 100);
                 $(".phase").eq(window.atPhase).addClass("active")
                 window.elapsedLocally = 0;
                 
             } else {
-                $(".phase.active").removeClass("active");
+                $(".phase.active").removeClass("active").removeClass("font-weight-bold");
                 window.isFinished = true;
                 $(".phases").append(`<footer class="conclusion text-center text-white p-5 mb-4 rounded-3">
                     Congratulations! You finished today's training! Go back to <a href='../../'>weeks<a>.               
@@ -148,6 +153,7 @@ function clickToReset(event) {
     if($(event.target).hasClass("active")) {
         window.wantToReset = true;
         $(event.target).addClass("restarting");
+        $(event.target).find(".local-timer").text("")
     }
 
     // Throttle clicking multiple times in a row that would've caused timer to go negative
