@@ -34,6 +34,10 @@ function updateLinethroughs() {
     });
 } // updateLinethroughs
 
+function checkNext(event) {
+    $(event.target).next().prop('checked', !$(event.target).next().prop('checked'))
+}
+
 $(()=>{
     // function testSetup(functionName) {
     //     if(functionName==="saveCheckmarks" || functionName==="updateLinethroughs") {
@@ -44,7 +48,6 @@ $(()=>{
 
     // UIUX: Clicking the week number also checks it off
     $(".week-num").on("click", (event) => {
-        debugger;
         var wasPreviouslyCrossed = $(event.target).hasClass("text-decoration-line-through");
         if(!wasPreviouslyCrossed)
             $(event.target).closest("li").find("input").each((i,cb)=> $(cb).prop("checked", true));

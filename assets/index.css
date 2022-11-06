@@ -1,48 +1,62 @@
-@font-face {
-    font-family: "Montserrat";
-    src: url(fonts/Montserrat/Montserrat-VariableFont_wght.ttf);
-}
-
-body {
-    padding-top: 30px;
-    font-family: "Montserrat";
-}
-
-h2 {
-    font-size: calc(1.125rem + .9vw)
-}
-
-h3 {
-    font-size: calc(1rem + .9vw)
-}
-
-.programs li {
-    list-style: none;
-    line-height: 1.9rem;
-}
-
-.programs li a {
-    text-decoration: none;
-}
-
-input[type="checkbox"]:first-child {
-    margin-left: 2ch;
-    margin-right: 1ch;
-}
-
-input[type="checkbox"]:not(:first-child) {
-    margin-right: 1ch;
-}
-
-.week-num::before {
-    content: "\00a0"
-}
-
-.week-num {
-    font-weight: 700;
-}
-
-.fa-external-link-square-alt {
-    color: orange;
-    cursor: pointer;
-}
+    @font-face {
+        font-family: "Montserrat";
+        src: url(fonts/Montserrat/Montserrat-VariableFont_wght.ttf);
+    }
+    
+    body {
+        padding-top: 30px;
+        font-family: "Montserrat";
+    }
+    
+    h2 {
+        font-size: calc(1.125rem + .9vw)
+    }
+    
+    h3 {
+        font-size: calc(1rem + .9vw)
+    }
+    
+    .programs li {
+        list-style: none;
+        line-height: 1.9rem;
+    }
+    
+    .programs li a {
+        text-decoration: none;
+    }
+    
+    .checkboxes input[type="checkbox"]:first-child {
+        margin-left: 2ch;
+        margin-right: 1ch;
+    }
+    
+    .checkboxes input[type="checkbox"]:not(:first-child) {
+        margin-right: 1ch;
+    }
+    
+    .week-num::before {
+        content: "\00a0"
+    }
+    
+    .week-num {
+        font-weight: 700;
+    }
+    
+    .fa-external-link-square-alt {
+        color: orange;
+        cursor: pointer;
+    }
+    
+    .checkboxes-with-labels label:first-child {
+        margin-left: 1ch;
+    }
+    
+    .checkboxes-with-labels input {
+        margin-right: .5ch;
+    }
+    
+    @media screen AND (max-width:850px) {
+        .col-sm-6 {
+            width: 100%;
+        }
+    }
