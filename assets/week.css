@@ -89,11 +89,24 @@ h1 span {
     height: 110px;
 }
 
+.phase {
+    position: relative;
+}
+
 .restarting {
     background-color: lightgray !important;
 }
 
+.restarting::after {
+    padding-top: 5px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font: normal normal normal 14px/1 FontAwesome;
+    content: "\00a0\f021";
+}
+
 .font-weight-bold {
-    font-weight: 1000;
+    text-align: center;
     text-shadow: 1px 2px rgba(0, 0, 0, .3);
 }
