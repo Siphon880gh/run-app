@@ -44,4 +44,5 @@ input[type="checkbox"]:not(:first-child) {
 
 .fa-external-link-square-alt {
     color: orange;
+    cursor: pointer;
 }
