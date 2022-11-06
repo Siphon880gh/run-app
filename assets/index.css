@@ -24,3 +24,24 @@ h3 {
 .programs li a {
     text-decoration: none;
 }
+
+input[type="checkbox"]:first-child {
+    margin-left: 2ch;
+    margin-right: 1ch;
+}
+
+input[type="checkbox"]:not(:first-child) {
+    margin-right: 1ch;
+}
+
+.week-num::before {
+    content: "\00a0"
+}
+
+.week-num {
+    font-weight: 700;
+}
+
+.fa-external-link-square-alt {
+    color: orange;
+}

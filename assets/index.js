@@ -23,18 +23,14 @@ function saveCheckmarks() {
 }
 
 function updateLinethroughs() {
-    // console.log("Called updateLinethroughs");
-    // function test() {
-    //     console.assert()
-    // }
-
-   $(".programs .text-decoration-line-through").removeClass("text-decoration-line-through");
-
-    $(".programs input[type='checkbox']").each((i, el)=> { 
-        const isChecked = el.checked;
-        if(isChecked) {
-            el.nextElementSibling.classList.add("text-decoration-line-through")
+    $(".checkboxes").each((i,cbg)=>{
+        var $cbg = $(cbg);
+        if($cbg.find("input").length === $cbg.find("input").filter((i,cb)=>$(cb).prop("checked")).length) {
+            $cbg.closest("li").find(".week-num, .fa-external-link-square-alt").addClass("text-decoration-line-through")
+        } else {
+            $cbg.closest("li").find(".week-num, .fa-external-link-square-alt").removeClass("text-decoration-line-through")
         }
+        
     });
 } // updateLinethroughs
 
@@ -47,10 +43,13 @@ $(()=>{
     // testSetup("saveCheckmarks");
 
     // UIUX: Clicking the week number also checks it off
-    $(".programs li > span").on("click", (event) => {
-        const cb = event.target.previousElementSibling;
-        cb.checked = !cb.checked; // Insufficient to trigger input change event
-        $(cb).trigger("change");
+    $(".week-num").on("click", (event) => {
+        debugger;
+        var wasPreviouslyCrossed = $(event.target).hasClass("text-decoration-line-through");
+        if(!wasPreviouslyCrossed)
+            $(event.target).closest("li").find("input").each((i,cb)=> $(cb).prop("checked", true));
+        else
+            $(event.target).closest("li").find("input").each((i,cb)=> $(cb).prop("checked", false));
         updateLinethroughs();
     })
 

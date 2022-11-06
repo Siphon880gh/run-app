@@ -13,8 +13,8 @@
 
     <script id="data">
         const heading = {
-            programName: "Test",
-            slot: "Week 1",
+            programName: "Run Continuously for 20 Minutes",
+            slot: "Week 3",
         }
         const colorOnTypeWildcard = {
             run: "#4ebc09",
@@ -22,14 +22,14 @@
             walk: "rgba(13,202,240,1)",
         }
         const intervals = [{
+            type: "Run",
+            time: "2s"
+        }, {
             type: "Walk",
             time: "3s"
         }, {
-            type: "Jog",
-            time: "4s"
-        }, {
             type: "Run",
-            time: "3s"
+            time: "2s"
         }, ];
     </script>
 
@@ -66,6 +66,7 @@
 </head>
 
 <body class="container px-4">
+    <div class="spacer">&nbsp;</div>
 
     <script src="../../bower_components/handlebars/handlebars.min.js"></script>
     <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
