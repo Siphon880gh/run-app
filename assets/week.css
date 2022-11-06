@@ -88,3 +88,7 @@ h1 span {
     width: 1px;
     height: 110px;
 }
+
+.restarting {
+    background-color: lightgray !important;
+}

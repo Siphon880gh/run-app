@@ -111,6 +111,7 @@ $(()=>{
                     window.elapsedLocally = 0;
                 }
                 window.wantToReset = false;
+                $(".restarting").removeClass("restarting")
             }
         
         } else {
@@ -144,8 +145,10 @@ function clickToReset(event) {
         event.target = event.target.closest(".phase")
     }
     // console.log(event.target)
-    if($(event.target).hasClass("active"))
+    if($(event.target).hasClass("active")) {
         window.wantToReset = true;
+        $(event.target).addClass("restarting");
+    }
 
     // Throttle clicking multiple times in a row that would've caused timer to go negative
     $(".phase").off("click");
