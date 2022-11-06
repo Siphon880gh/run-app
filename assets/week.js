@@ -110,16 +110,19 @@ $(()=>{
         window.elapsedLocally++;
 
         $(".phase-timemark .local-timer").eq(window.atPhase).text( utils.toHHMMSS(localTime) );
-        console.log({elapsed,localTime,matrixP:window.matrixP[0]})
-        console.log(wantToReset)
+        // console.log({elapsed,localTime,matrixP:window.matrixP[0]})
+        // console.log(wantToReset)
         
         if(window.elapsed < window.matrixR[window.atPhase]) { 
         // eg. 1 < 30 when 1 second elapsed at first row accuulated 30 seconds planned
 
-            if(window.elapsed > (window.matrixR[window.atPhase])-3)
+            if(window.elapsed > (window.matrixR[window.atPhase])-3) {
                 $(".phase").eq(window.atPhase).addClass("font-weight-bold");
+                beep();
+            }
         
         } else {
+            beep();
             // Move to next phase
             if(typeof window.matrixR[window.atPhase+1] !== "undefined") {
                 // Test this
