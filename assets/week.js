@@ -102,7 +102,8 @@ $(()=>{
                 window.elapsedLocally = 0;
             }
             window.wantToReset = false;
-            $(".restarting").removeClass("restarting")
+            $(".restarting").removeClass("restarting");
+            $(".restarting").removeClass("font-weight-bold");
         }
 
         var localTime = window.elapsed;
