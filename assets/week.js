@@ -6,8 +6,7 @@ window.poller = null;
 window.matrixR = []; // matrix Reduced
 window.matrixP = []; // matrix Phase
 window.atPhase = 0;
-
-window.wantToReset = false;
+window.wantToRestart = false;
 
 var utils = {
     toHHMMSS: (secs) => {
@@ -96,12 +95,12 @@ $(()=>{
         $(".global-timer").text(newHHMMSS);
 
 
-        if(window.wantToReset) {
+        if(window.wantToRestart) {
             if(window.elapsedLocally>0) {
                 window.elapsed-=window.elapsedLocally;
                 window.elapsedLocally = 0;
             }
-            window.wantToReset = false;
+            window.wantToRestart = false;
             $(".restarting").removeClass("restarting");
             $(".restarting").removeClass("font-weight-bold");
         }
@@ -112,18 +111,23 @@ $(()=>{
 
         $(".phase-timemark .local-timer").eq(window.atPhase).text( utils.toHHMMSS(localTime) );
         // console.log({elapsed,localTime,matrixP:window.matrixP[0]})
-        // console.log(wantToReset)
+        // console.log(wantToRestart)
         
         if(window.elapsed < window.matrixR[window.atPhase]) { 
         // eg. 1 < 30 when 1 second elapsed at first row accuulated 30 seconds planned
 
             if(window.elapsed > (window.matrixR[window.atPhase])-3) {
                 $(".phase").eq(window.atPhase).addClass("font-weight-bold");
-                beep();
+
+                if(!window.audioMuted) {
+                    beep();
+                } // beeping
             }
         
         } else {
-            beep();
+            if(!window.audioMuted) {
+                beep();
+            } // beeping
             // Move to next phase
             if(typeof window.matrixR[window.atPhase+1] !== "undefined") {
                 // Test this
@@ -155,7 +159,7 @@ function clickToReset(event) {
     }
     // console.log(event.target)
     if($(event.target).hasClass("active")) {
-        window.wantToReset = true;
+        window.wantToRestart = true; // defer to setInterval more executions
         $(event.target).addClass("restarting");
         $(event.target).find(".local-timer").text("")
     }
