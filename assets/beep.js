@@ -56,7 +56,7 @@ $(()=>{
     if(is_iOS()) {
         window.audioMuted = true;
         $("body").append(`
-            <aside style='position:fixed; bottom: 5px; left: 5px;'>
+            <aside style='position:fixed; bottom: 15px; left: 15px; font-size:150%;'>
                 <i class='fa fa-volume-mute' style='cursor:pointer' onclick='beep(); setTimeout(initAfterHasUnlocked,200); window.audioMuted=false; this.closest("aside").remove(); '></i>
             </aside>
             <aside style='display:none;'>
