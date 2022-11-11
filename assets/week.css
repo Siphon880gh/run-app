@@ -92,6 +92,8 @@ h1 span {
 
 .phase {
     position: relative;
+    border: 1px solid gray;
+    border-radius: 5px;
 }
 
 .restarting {
