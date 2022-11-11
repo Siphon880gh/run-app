@@ -33,12 +33,12 @@
     .checkboxes input[type="checkbox"]:not(:first-child) {
         margin-right: 1ch;
     }
-    
-    .week-num::before {
+    /* .week-num::before {
         content: "\00a0"
-    }
+    } */
     
     .week-num {
+        margin-left: 1ch;
         font-weight: 700;
     }
     
