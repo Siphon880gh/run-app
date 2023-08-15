@@ -39,6 +39,7 @@ function checkNext(event) {
 }
 
 $(()=>{
+    // Some rapid TDD
     // function testSetup(functionName) {
     //     if(functionName==="saveCheckmarks" || functionName==="updateLinethroughs") {
     //         $(".programs input[type='checkbox']").attr("checked", false);
@@ -47,13 +48,22 @@ $(()=>{
     // testSetup("saveCheckmarks");
 
     // UIUX: Clicking the week number also checks it off
+    // Deciding Split A/B Design
+    // Should clicking week cross it all our, or should it open the link?
+    // $(".week-num").on("click", (event) => {
+    //     var wasPreviouslyCrossed = $(event.target).hasClass("text-decoration-line-through");
+    //     if(!wasPreviouslyCrossed)
+    //         $(event.target).closest("li").find("input").each((i,cb)=> $(cb).prop("checked", true));
+    //     else
+    //         $(event.target).closest("li").find("input").each((i,cb)=> $(cb).prop("checked", false));
+    //     updateLinethroughs();
+    // })
     $(".week-num").on("click", (event) => {
-        var wasPreviouslyCrossed = $(event.target).hasClass("text-decoration-line-through");
-        if(!wasPreviouslyCrossed)
-            $(event.target).closest("li").find("input").each((i,cb)=> $(cb).prop("checked", true));
-        else
-            $(event.target).closest("li").find("input").each((i,cb)=> $(cb).prop("checked", false));
-        updateLinethroughs();
+        const link = $(event.target).next().attr("href");
+        // Testing different UX
+        // window.open(link);
+        if(link)
+            window.location.href = link;
     })
 
     // Previously checked weeks from localStorage
