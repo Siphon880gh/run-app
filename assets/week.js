@@ -36,6 +36,29 @@ var utils = {
 }
 
 $(()=>{
+    // Setup modal
+    $("body").append(`
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header" style="border:0">
+                <h5 class="modal-title text-center display-5" id="exampleModalLabel" style="width:100%; padding-left:10px">PAUSED</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="width:33px"></button>
+            </div>
+            <div class="modal-body text-center">
+                <p class="text-muted">You've paused for a while.<br/>Do you want to continue?</p>
+                <br/>
+                <span class="paused-timer display-6">0</span>
+            </div>
+            <div class="modal-footer" style="border:0">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hide</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick='$(".position-corner .fa").click();'>Continue</button>
+            </div>
+            </div>
+        </div>
+        </div>
+`);
 
     // Render Handlebars
     (()=>{
@@ -52,10 +75,7 @@ $(()=>{
                     return accumulator+currentVal;
                 }, 0); 
             })())
-        }
-            
-
-            
+        };
         let html = interpolableTemplate(fillIn);
         
         $(".container").prepend(html);
@@ -69,6 +89,10 @@ $(()=>{
             window.isPlaying = false;
             const totalTime = window.matrixR[window.matrixR.length-1];
             $(".global-timer").addClass("text-muted").text(utils.toHHMMSS( totalTime ))
+            $(".paused-timer").text("0");
+
+            $("#myModal").modal('show');
+
         } else {
             $fa.removeClass("fa-play").addClass("fa-pause");
             window.isPlaying = true;
@@ -120,12 +144,19 @@ $(()=>{
     // Countup
     $(".phase").eq(0).addClass("active")
     window.poller = setInterval(()=>{
-        if(!window.isPlaying || window.isFinished) return;
+        if(!window.isPlaying || window.isFinished) {
+            // Paused time countup
+            var pausedTime = $(".paused-timer").text();
+            pausedTime = parseInt(pausedTime);
+            pausedTime++;
+            $(".paused-timer").text(pausedTime);
+
+            return;
+        }
 
         // Global
         const newHHMMSS= utils.toHHMMSS(window.elapsed);
         $(".global-timer").text(newHHMMSS);
-
 
         if(window.wantToRestart) {
             if(window.elapsedLocally>0) {
