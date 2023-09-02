@@ -51,7 +51,7 @@ $(()=>{
                 <br/>
                 <span class="paused-timer display-6">0</span>
             </div>
-            <div class="modal-footer" style="border:0">
+            <div class="modal-footer" style="border:0; flex-direction: column; margin-bottom: 20px; gap: 20px;">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hide</button>
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick='$(".position-corner .fa").click();'>Continue</button>
             </div>
