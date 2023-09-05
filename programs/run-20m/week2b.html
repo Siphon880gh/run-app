@@ -14,23 +14,34 @@
     <script id="data">
         const heading = {
             programName: "Run Continuously for 20 Minutes",
-            slot: "Week 4",
+            slot: "Week 3",
         }
         const colorOnTypeWildcard = {
             run: "#BDF578",
             jog: "rgba(245, 136, 108,.4)",
             walk: "rgba(13,202,240,.6)",
         }
-        const intervals = [
-        {
+        const intervals = [{
             type: "Jog",
-            time: "5m" // Jog
-        },{
-            type: "Run",
-            time: "15m" // Run
+            time: "60s" // Run
         }, {
             type: "Walk",
-            time: "1m"
+            time: "90s"
+        }, {
+            type: "Run",
+            time: "90s" // Run
+        }, {
+            type: "Walk",
+            time: "90s"
+        }, {
+            type: "Run",
+            time: "60s" // Run
+        }, {
+            type: "Walk",
+            time: "90s"
+        }, {
+            type: "Run",
+            time: "90s" // Run
         }, ];
     </script>
 
