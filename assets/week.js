@@ -7,7 +7,7 @@ window.matrixR = []; // matrix Reduced
 window.matrixP = []; // matrix Phase
 window.atPhase = 0;
 window.wantToRestart = false;
-window.lastSecondsBeeping = 6;
+window.lastSecondsBeeping = localStorage.getItem("FitnessDeck__lastSecondsBeeping")?parseInt(localStorage.getItem("FitnessDeck__lastSecondsBeeping")):6;
 
 /**
  * 
@@ -184,7 +184,7 @@ $(()=>{
                 $(".phase").eq(window.atPhase).addClass("font-weight-bold");
 
                 if(!window.audioMuted) {
-                    if(window.elapsed > (window.matrixR[window.atPhase])-1)
+                    if(window.elapsed > (window.matrixR[window.atPhase])-window.lastSecondsBeeping)
                         beepFinal();
                     else
                         beep();
