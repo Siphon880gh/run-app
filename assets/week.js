@@ -7,6 +7,7 @@ window.matrixR = []; // matrix Reduced
 window.matrixP = []; // matrix Phase
 window.atPhase = 0;
 window.wantToRestart = false;
+window.lastSecondsBeeping = 6;
 
 /**
  * 
@@ -179,11 +180,14 @@ $(()=>{
         if(window.elapsed < window.matrixR[window.atPhase]) { 
         // eg. 1 < 30 when 1 second elapsed at first row accuulated 30 seconds planned
 
-            if(window.elapsed > (window.matrixR[window.atPhase])-3) {
+            if(window.elapsed > (window.matrixR[window.atPhase])-window.lastSecondsBeeping) {
                 $(".phase").eq(window.atPhase).addClass("font-weight-bold");
 
                 if(!window.audioMuted) {
-                    beep();
+                    if(window.elapsed > (window.matrixR[window.atPhase])-1)
+                        beepFinal();
+                    else
+                        beep();
                 } // beeping
             }
         
