@@ -48,13 +48,13 @@ $(()=>{
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="width:33px"></button>
             </div>
             <div class="modal-body text-center">
-                <p class="text-muted">You've paused for a while.<br/>Do you want to continue?</p>
+                <p class="text-muted">You've paused.<br/>Here's how many seconds it's been.<br/><br/>Continue now?</p>
                 <br/>
                 <span class="paused-timer display-6">0</span>
             </div>
             <div class="modal-footer" style="border:0; flex-direction: column; margin-bottom: 20px; gap: 20px;">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hide</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick='$(".position-corner .fa").click();'>Continue</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="opacity:0.6">Hide this box</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick='$(".position-corner .fa").click();'>Continue workout!</button>
             </div>
             </div>
         </div>
