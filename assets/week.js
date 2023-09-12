@@ -7,7 +7,7 @@ window.matrixR = []; // matrix Reduced
 window.matrixP = []; // matrix Phase
 window.atPhase = 0;
 window.wantToRestart = false;
-window.lastSecondsBeeping = localStorage.getItem("FitnessDeck__lastSecondsBeeping")?parseInt(localStorage.getItem("FitnessDeck__lastSecondsBeeping")):6;
+window.lastSecondsBeeping = localStorage.getItem("RunApp__lastSecondsBeeping")?parseInt(localStorage.getItem("RunApp__lastSecondsBeeping")):6;
 
 /**
  * 

@@ -35,9 +35,14 @@
                 <p>Coming soon - 10 mile, half marathon, and marathon interactive plans. The walk, jog, and run durations are based on <a href="//exrx.net/Aerobic" target="_blank">ExRx.net</a>'s aerobic conditioning plans. I've also included "transitional" weeks for those who need a gradual transition to more challenging weeks, and they are denoted with a/b/c. Those more athletic can skip transitional weeks and follow the original ExRx.net's postings.</p>
             </div>
 
-            <p>
+            <p style="display:flex; gap:15px; justify-content:center;">
                 <button class="btn-installer btn btn-primary btn-sm d-none">Install app</button>
             </p>
+
+            <div style="position:fixed;top:5px; right:15px">
+                <button class="btn btn-sm" style="font-size:80%; background-color:lightgray;" onclick='
+                $("#myModal").modal(`show`);'><i class="fa fa-cog"></i>&nbsp;Settings</button>
+            </div>
 
         </header>
         <main class="programs row gx-5">

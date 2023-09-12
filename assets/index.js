@@ -91,3 +91,88 @@ $(()=>{
       });
 
 });
+
+
+function saveSetBeeps() {
+    let beeps = $('input[name="beep"]:checked').val();
+    if(beeps) {
+        localStorage.setItem("RunApp__lastSecondsBeeping", beeps);
+    }
+}
+
+$(()=>{
+    // Setup modal
+    $("body").append(`
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header" style="border:0">
+                <h5 class="modal-title text-center display-5" id="exampleModalLabel" style="width:100%; padding-left:10px">Settings</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="width:33px"></button>
+            </div>
+            <div class="modal-body text-center">
+                <b>Beep for how many seconds?</b>
+                <br><br/>
+                <div style="display:flex; flex-flow: row nowrap; justify-content: center; gap: 10px;">
+                    <section>
+                        <input type="radio" name="beep" value="1">
+                        <br/>
+                        <span>
+                        1
+                        </span>
+                    </section>
+                    <section>
+                        <input type="radio" name="beep" value="2">
+                        <br/>
+                        <span>
+                        2
+                        </span>
+                    </section>
+                    <section>
+                        <input type="radio" name="beep" value="3">
+                        <br/>
+                        <span>
+                        3
+                        </span>
+                    </section>
+                    <section>
+                        <input type="radio" name="beep" value="4">
+                        <br/>
+                        <span>
+                        4
+                        </span>
+                    </section>
+                    <section>
+                        <input type="radio" name="beep" value="5">
+                        <br/>
+                        <span>
+                        5
+                        </span>
+                    </section>
+                    <section>
+                        <input type="radio" name="beep" value="6">
+                        <br/>
+                        <span>
+                        6
+                        </span>
+                    </section>
+                    <section>
+                        <input type="radio" name="beep" value="7">
+                        <br/>
+                        <span>
+                        7
+                        </span>
+                    </section>
+                </div>
+            </div>
+            <div class="modal-footer" style="border:0; flex-direction: column; margin-bottom: 20px; gap: 20px;">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="opacity:0.6">Cancel</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick='saveSetBeeps();'>OK</button>
+            </div>
+            </div>
+        </div>
+        </div>
+`);
+
+}); // $(()=>{
