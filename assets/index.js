@@ -175,4 +175,18 @@ $(()=>{
         </div>
 `);
 
+    // Pre select the number of seconds that get beeped
+    if(localStorage.getItem("RunApp__lastSecondsBeeping")) {
+
+        const numBeeps = parseInt(localStorage.getItem("RunApp__lastSecondsBeeping"));
+        const radioOption = document.querySelector(`input[name="beep"][value="${numBeeps}"]`)
+        //console.log(radioOption);
+        radioOption.checked = true;
+    } else {
+        const radioOption = document.querySelector(`input[name="beep"][value="4"]`)
+        //console.log(radioOption);
+        radioOption.checked = true;
+    }
+        
+
 }); // $(()=>{
