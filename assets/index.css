@@ -16,6 +16,12 @@
         font-size: calc(1rem + .9vw)
     }
     
+    @media screen and (max-width: 490px) {
+        #app-title {
+            margin-top:15px !important;
+        }
+    }
+
     .programs li {
         list-style: none;
         line-height: 1.9rem;
