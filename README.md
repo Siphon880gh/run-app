@@ -19,7 +19,7 @@ By Weng Fei Fung. I feel inspired to tackle a 3 mile run, and I need to make a r
 
 :computer: Live Demo:
 ---
-<a href="https://siphon880gh.github.io/run-app/" target="_blank">Check it out</a>
+<a href="https://therunner.app" target="_blank">Check it out</a>
 
 :camera: Preview:
 ---
