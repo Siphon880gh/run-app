@@ -214,3 +214,14 @@ Handlebars.registerHelper('times', function (n, block) {
 Handlebars.registerHelper('eq', function(a, b) {
     return a === b;
 });
+
+Handlebars.registerHelper('inc', function(value) {
+    return parseInt(value) + 1;
+
+    /* 
+        So that counting can start at 1
+        {{#each items}}
+          <li>{{inc @index}}: {{this}}</li>
+        {{/each}}
+    */
+});

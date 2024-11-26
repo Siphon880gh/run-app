@@ -103,7 +103,7 @@
                     <div id="program-run-continuous-20m" class="card-body">
                         <ul>
                             {{#each this}}
-                            <li>
+                            <li id="li-continuous-20m-{{inc @index}}">
                                 <a class="hover:text-red-400 {{#if difficult}} {{#if (eq difficult 1)}}text-red-900{{/if}}{{/if}} {{#if optional}} {{#if (eq optional 1)}}text-gray-600{{/if}}{{/if}}">
                                     <span class="week-num">{{weekNum}}</span>
                                     <span class="fa fa-play" target="_blank" href="{{player}}"></span>
@@ -157,7 +157,7 @@
                     <div id="program-run-1mile-to-5mile" class="card-body">
                         <ul>
                             {{#each this}}
-                            <li class="flex flex-row gap-3">
+                            <li id="li-1mi-5mi-{{inc @index}}" class="flex flex-row gap-3">
                                 <span class="week-num  {{#if difficult}} {{#if (eq difficult 1)}}text-red-900{{/if}}{{/if}} {{#if optional}} {{#if (eq optional 1)}}text-gray-600{{/if}}{{/if}}">{{weekNum}}</span>
                                 <span class="checkboxes-with-labels ml-2 flex flex-row gap-4">
                                     {{#each dayGoals}}
@@ -214,11 +214,6 @@
     <script src="assets/index.js?v=3"></script>
 
     <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js', {
-                scope: 'https://therunner.app'
-            });
-        }
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js', {

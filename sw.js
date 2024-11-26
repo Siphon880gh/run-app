@@ -1,4 +1,4 @@
-const CACHE_NAME = `wi-runs-app-cache-v7.8`;
+const CACHE_NAME = `wi-runs-app-cache-v7.9`;
 const PRECACHE_URLS = ['/']; // Add other essential files to pre-cache if needed
 
 // Pre-cache initial resources
