@@ -240,3 +240,11 @@ function clickToReset(event) {
 $(()=>{
     $(".phase").on("click", clickToReset);
 })
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    var mdt = new MobileDetect(window.navigator.userAgent);
+    var isMobile = mdt.phone() || mdt.tablet();
+    if(!isMobile) {
+        alert("Detected you are not using a phone or tablet. This running app feature is on the go. It will guide you through walks/jogs/run on your phone.")
+    }
+})
