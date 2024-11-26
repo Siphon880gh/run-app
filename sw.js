@@ -1,32 +1,74 @@
-const CACHE_NAME = `runs-app-cache-v5`;
+const CACHE_NAME = `wi-runs-app-cache-v7.8`;
+const PRECACHE_URLS = ['/']; // Add other essential files to pre-cache if needed
 
-// Use the install event to pre-cache all initial resources.
-self.addEventListener('install', event => {
-  event.waitUntil((async () => {
-    const cache = await caches.open(CACHE_NAME);
-    cache.addAll(['/']);
-  })());
+// Pre-cache initial resources
+self.addEventListener('install', (event) => {
+  console.log("sw.js: install");
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(PRECACHE_URLS);
+    })
+  );
+  self.skipWaiting(); // Activate immediately
+}); 
+
+// Clean up old caches
+self.addEventListener('activate', (event) => {
+  console.log("sw.js: activate");
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (cacheName !== CACHE_NAME) {
+            console.log("Deleted cache: " + cacheName);
+            console.log("Will store into new cache on successful fetches");
+            return caches.delete(cacheName); // Delete old caches
+          } else {
+            console.log("Using cache: " + cacheName)
+          }
+        })
+      );
+    })
+  );
+  self.clients.claim(); // Claim control immediately
 });
 
-self.addEventListener('fetch', event => {
-  event.respondWith((async () => {
-    const cache = await caches.open(CACHE_NAME);
-
-    try {
-      // Try to fetch the resource from the network.
-      const fetchResponse = await fetch(event.request);
-
-      // Save the resource in the cache.
-      cache.put(event.request, fetchResponse.clone());
-
-      // And return it.
-      return fetchResponse;
-    } catch (e) {
-      // Fetching didn't work get the resource from the cache.
-      const cachedResponse = await cache.match(event.request);
-
-      // And return it.
-      return cachedResponse;
-    }
-  })());
+self.addEventListener('fetch', (event) => {
+  // Only intercept requests for static assets
+  if (event.request.url.includes('.js') || 
+      event.request.url.includes('.css') || 
+      event.request.url.includes('.html') || 
+      event.request.url.includes('.png') || 
+      event.request.url.includes('.jpg') || 
+      event.request.url.includes('.svg')) {
+    
+    event.respondWith(
+      (async () => {
+        const cache = await caches.open(CACHE_NAME);
+        
+        // First, check if the resource is in cache
+        const cachedResponse = await cache.match(event.request);
+        
+        if (cachedResponse) {
+          // If cached, return the cached version immediately
+          return cachedResponse;
+        }
+        
+        try {
+          // If not in cache, fetch from network
+          const fetchResponse = await fetch(event.request);
+          
+          // Check if it's a valid response before caching
+          if (fetchResponse.ok) {
+            cache.put(event.request, fetchResponse.clone());
+          }
+          
+          return fetchResponse;
+        } catch (e) {
+          // If network fetch fails and not in cache, return a fallback
+          return new Response('Offline', { status: 404 });
+        }
+      })()
+    );
+  }
 });

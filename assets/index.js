@@ -1,5 +1,5 @@
-// Todo: Create a store to track state of checkboxes so you don't repeatedly query for checkboxes
-// Todo: Call updateLinethroughs whenever state changes instead of manually at different points of the app
+// Todo: Create a store to track state of checkboxes so you don't repeatedly query for checkboxes.
+// Todo: Call updateLinethroughs whenever state changes instead of manually at different points of the app.
 
 const utils = {
     doesIndexExist: (index, arr) => typeof arr[index] !== "undefined"

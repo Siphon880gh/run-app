@@ -211,25 +211,12 @@
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="sw-install-button.js"></script>
-    <script src="assets/index.js?v=3"></script>
+    <script src="assets/index.js"></script>
 
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js', {
                 scope: 'https://therunner.app'
-            });
-        }
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js', {
-                scope: 'https://therunner.app'
-            })
-                .then(registration => {
-                    console.log('Service Worker registered with scope:', registration.scope);
-                })
-                .catch(error => {
-                    console.error('Service Worker registration failed:', error);
-                });
             });
         }
     </script>
