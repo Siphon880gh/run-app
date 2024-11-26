@@ -13,6 +13,8 @@
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="docs/ra-foot.png">
     <link rel="icon" type="image/x-icon" href="docs/ra-glow.gif">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script> <!-- Handlebar templating engine -->
     <meta name="theme-color" content="#808080" />
 </head>
 
@@ -21,7 +23,7 @@
         <header class="mb-4 text-center">
             <h1 id="app-title">Run Programs <i class="fa-solid fa-person-running"></i></h1>
             <i>By <a href="//wengindustry.com" target="_blank">Weng Fei Fung</a></i>
-            <section>
+            <section class="w-full flex flex-row justify-center gap-2 my-2">
                 <a target="_blank" href="https://github.com/Siphon880gh/run-app" rel="nofollow">
                     <img src="https://img.shields.io/badge/GitHub--blue?style=social&logo=GitHub" alt="Github" data-canonical-src="https://img.shields.io/badge/GitHub--blue?style=social&logo=GitHub" style="max-width:10ch;"></a>
                 <a target="_blank" href="https://www.linkedin.com/in/weng-fung/" rel="nofollow">
@@ -61,199 +63,60 @@
                             <i class="font-italic">(<span style='color:#8b0000'>Red is difficult</span> for some individuals: May want to repeat week or add optional transitional weeks if you need more conditioning.)</i>
                         </i>
                     </div>
-                    <div class="card-body">
+                                    
+                    <script>
+                        document.addEventListener("DOMContentLoaded", ()=>{
+                            // Init to be overwritten later
+                            var data = [];
+                            var el = null;
+
+
+                            data = [
+                            { weekNum: "Week 0a", player: "programs/run-20m/week0a.html", checkboxCount:2, optional:1},
+                                { weekNum: "Week 1", player:"programs/run-20m/week1.html", checkboxCount: 3},
+                                { weekNum: "Week 1b", player:"programs/run-20m/week1b.html", checkboxCount: 2, optional:1}, 
+                                { weekNum: "Week 2", player:"programs/run-20m/week2.html", checkboxCount: 3},
+                                { weekNum: "Week 2b", player:"programs/run-20m/week2b.html", checkboxCount: 2, optional:1},
+                                { weekNum: "Week 3", player:"programs/run-20m/week3.html", checkboxCount: 3}, 
+                                { weekNum: "Week 3b", player:"programs/run-20m/week3b.html", checkboxCount: 3, optional:1}, 
+                                { weekNum: "Week 4", player:"programs/run-20m/week4.html", checkboxCount: 3}, 
+                                { weekNum: "Week 4b", player:"programs/run-20m/week4b.html", checkboxCount: 3, optional:1},
+                                { weekNum: "Week 5", player:"programs/run-20m/week5.html", checkboxCount: 3, difficult:1}, 
+                                { weekNum: "Week 5b", player:"programs/run-20m/week5b.html", checkboxCount: 2, optional:1}, 
+                                { weekNum: "Week 6", player:"programs/run-20m/week6.html", checkboxCount: 3}, 
+                                { weekNum: "Week 6b", player:"programs/run-20m/week6b.html", checkboxCount: 2, optional:1}, 
+                                { weekNum: "Week 7", player:"programs/run-20m/week7.html", checkboxCount: 3}, 
+                                { weekNum: "Week 7b", player:"programs/run-20m/week7b.html", checkboxCount: 3, optional:1}, 
+                                { weekNum: "Week 8", player:"programs/run-20m/week8.html", checkboxCount: 3}, 
+                                { weekNum: "Week 8b", player:"programs/run-20m/week8b.html", checkboxCount: 2, optional:1}, 
+                                { weekNum: "Week 9", player:"programs/run-20m/week9.html", checkboxCount: 3}, 
+                                { weekNum: "Week 9b", player:"programs/run-20m/week9b.html", checkboxCount: 2, optional:1}, 
+                                { weekNum: "Week 10", player:"programs/run-20m/week10.html", checkboxCount: 3}, 
+                                { weekNum: "Week 10b", player:"programs/run-20m/week10b.html", checkboxCount: 2, optional:1}, 
+                                { weekNum: "Week 11", player:"programs/run-20m/week11.html", checkboxCount: 3}
+                            ];
+                            el = document.getElementById("program-run-continuous-20m");
+                            renderInPlace(data, el);
+                        })
+                    </script>
+
+                    <div id="program-run-continuous-20m" class="card-body" style="display:none;">
                         <ul>
+                            {{#each this}}
                             <li>
-                                <span class="week-num" style='color: #4E4E4E'>Week 0a</span>
-                                <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week0a.html"></a>
+                                <a class="hover:text-red-400 {{#if difficult}} {{#if (eq difficult 1)}}text-red-900{{/if}}{{/if}} {{#if optional}} {{#if (eq optional 1)}}text-gray-600{{/if}}{{/if}}">
+                                    <span class="week-num">{{weekNum}}</span>
+                                    <span class="fa fa-play" target="_blank" href="{{player}}"></span>
+                                </a>
                                 <span class="checkboxes">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
+                                    <!-- <input type="checkbox">
+                                    <input type="checkbox"> -->
+                                    {{#times checkboxCount}}
+                                        <input type="checkbox"/>
+                                    {{/times}}
                                 </span>
                             </li>
-                            <li>
-                                <span class="week-num">Week 1</span>
-                                <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week1.html"></a>
-                                <span class="checkboxes">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                </span>
-                            </li>
-                            <li>
-                                <span class="week-num" style='color: #4E4E4E'>Week 1b</span>
-                                <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week1b.html"></a>
-                                <span class="checkboxes">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                </span>
-                            </li>
-                            <li>
-                                <span class="week-num">Week 2</span>
-                                <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week2.html"></a>
-                                <span class="checkboxes">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                </span>
-                            </li>
-                            <li>
-                                <span class="week-num" style='color: #4E4E4E'>Week 2b</span>
-                                <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week2b.html"></a>
-                                <span class="checkboxes">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                </span>
-                            </li>
-                            <li>
-                                <span class="week-num">Week 3</span>
-                                <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week3.html"></a>
-                                <span class="checkboxes">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                </span>
-                            </li>
-                            <li>
-                                <li>
-                                    <span class="week-num" style='color: #4E4E4E'>Week 3b</span>
-                                    <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week3b.html"></a>
-                                    <span class="checkboxes">
-                                        <input type="checkbox">
-                                        <input type="checkbox">
-                                        <input type="checkbox">
-                                    </span>
-                                </li>
-                                <li>
-                                    <span class="week-num">Week 4</span>
-                                    <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week4.html"></a>
-                                    <span class="checkboxes">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                </span>
-                                </li>
-                                <li>
-                                    <span class="week-num" style='color: #4E4E4E'>Week 4b</span>
-                                    <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week4b.html"></a>
-                                    <span class="checkboxes">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                </span>
-                                </li>
-                                <li>
-                                    <span class="week-num" style='color:#8b0000'>Week 5</span>
-                                    <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week5.html"></a>
-                                    <span class="checkboxes">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                </span>
-                                </li>
-                                <li>
-                                    <span class="week-num" style='color: #4E4E4E'>Week 5b</span>
-                                    <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week5b.html"></a>
-                                    <span class="checkboxes">
-                                        <input type="checkbox">
-                                        <input type="checkbox">
-                                    </span>
-                                </li>
-                                <li>
-                                    <span class="week-num">Week 6</span>
-                                    <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week6.html"></a>
-                                    <span class="checkboxes">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                </span>
-                                </li>
-                                <li>
-                                    <span class="week-num" style='color: #4E4E4E'>Week 6b</span>
-                                    <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week6b.html"></a>
-                                    <span class="checkboxes">
-                                        <input type="checkbox">
-                                        <input type="checkbox">
-                                    </span>
-                                </li>
-                                <li>
-                                    <span class="week-num">Week 7</span>
-                                    <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week7.html"></a>
-                                    <span class="checkboxes">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                </span>
-                                </li>
-                                <li>
-                                    <span class="week-num" style='color: #4E4E4E'>Week 7b</span>
-                                    <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week7b.html"></a>
-                                    <span class="checkboxes">
-                                        <input type="checkbox">
-                                        <input type="checkbox">
-                                        <input type="checkbox">
-                                    </span>
-                                </li>
-                                <li>
-                                    <span class="week-num">Week 8</span>
-                                    <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week8.html"></a>
-                                    <span class="checkboxes">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                </span>
-                                </li>
-                                <li>
-                                    <span class="week-num" style='color: #4E4E4E'>Week 8b</span>
-                                    <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week8b.html"></a>
-                                    <span class="checkboxes">
-                                        <input type="checkbox">
-                                        <input type="checkbox">
-                                    </span>
-                                </li>
-                                <li>
-                                    <span class="week-num">Week 9</span>
-                                    <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week9.html"></a>
-                                    <span class="checkboxes">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                </span>
-                                </li>
-                                <li>
-                                    <span class="week-num" style='color: #4E4E4E'>Week 9b</span>
-                                    <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week9b.html"></a>
-                                    <span class="checkboxes">
-                                        <input type="checkbox">
-                                        <input type="checkbox">
-                                    </span>
-                                </li>
-                                <li>
-                                    <span class="week-num">Week 10</span>
-                                    <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week10.html"></a>
-                                    <span class="checkboxes">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                </span>
-                                </li>
-                                <li>
-                                    <span class="week-num" style='color: #4E4E4E'>Week 10b</span>
-                                    <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week10b.html"></a>
-                                    <span class="checkboxes">
-                                        <input type="checkbox">
-                                        <input type="checkbox">
-                                    </span>
-                                </li>
-                                <li>
-                                    <span class="week-num">Week 11</span>
-                                    <a class="fa fa-external-link-square-alt" target="_blank" href="programs/run-20m/week11.html"></a>
-                                    <span class="checkboxes">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                    <input type="checkbox">
-                                </span>
-                                </li>
+                            {{/each}}
                         </ul>
                     </div>
                 </div>
@@ -267,168 +130,45 @@
                         <i class="font-italic">(4x days per week, May consecutive first 2 days)</i><br/>
                         <i class="font-italic">(<span style='color:#8b0000'>Red is difficult</span> for some individuals: May want to repeat week or add optional transitional weeks if you need more conditioning.)</i>
                     </div>
-                    <div class="card-body">
+                                 
+                    <script>
+                        document.addEventListener("DOMContentLoaded", ()=>{
+                            // Init to be overwritten later
+                            var data = [];
+                            var el = null;
+
+
+                            data = [
+                                { weekNum: "Week 1", dayGoals: ["1mi", "1mi", "1mi", "2mi"] }, 
+                                { weekNum: "Week 2", dayGoals: ["1mi", "1mi", "1mi", "2mi"] }, 
+                                { weekNum: "Week 3", dayGoals: ["1mi", "1mi", "2mi", "2mi"] }, 
+                                { weekNum: "Week 4", dayGoals: ["2mi", "1mi", "2mi", "2mi"] }, 
+                                { weekNum: "Week 5", dayGoals: ["2mi", "1mi", "2mi", "3mi"] }, 
+                                { weekNum: "Week 6", dayGoals: ["2mi", "2mi", "2mi", "3mi"], difficult:1 }, 
+                                { weekNum: "Week 7", dayGoals: ["2mi", "2mi", "2mi", "3mi"], difficult:1 }, 
+                                { weekNum: "Week 8", dayGoals: ["3mi", "2mi", "3mi", "4mi"] }, 
+                                { weekNum: "Week 9", dayGoals: ["3mi", "3mi", "3mi", "4mi"] }, 
+                                { weekNum: "Week 9", dayGoals: ["3mi", "3mi", "3mi", "5mi"] }
+                            ];
+                            el = document.getElementById("program-run-1mile-to-5mile");
+                            renderInPlace(data, el);
+                        })
+                    </script>
+                    <div id="program-run-1mile-to-5mile" class="card-body" style="display:none;">
                         <ul>
-                            <li>
-                                <span class="week-num">Week 1</span>
-                                <span class="checkboxes-with-labels">
-                                    <label onclick="checkNext(event)">1mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">1mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">1mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">2mi:</label>
-                                    <input type="checkbox">
+                            {{#each this}}
+                            <li class="flex flex-row gap-3">
+                                <span class="week-num  {{#if difficult}} {{#if (eq difficult 1)}}text-red-900{{/if}}{{/if}} {{#if optional}} {{#if (eq optional 1)}}text-gray-600{{/if}}{{/if}}">{{weekNum}}</span>
+                                <span class="checkboxes-with-labels ml-2 flex flex-row gap-4">
+                                    {{#each dayGoals}}
+                                        <div>
+                                            <input type="checkbox">
+                                            <label onclick="checkPrev(event)">{{this}}</label>    
+                                        </div>
+                                    {{/each}}
                                 </span>
                             </li>
-                            <li>
-                                <span class="week-num">Week 2</span>
-                                <span class="checkboxes-with-labels">
-                                    <label onclick="checkNext(event)">1mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">1mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">1mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">2mi:</label>
-                                    <input type="checkbox">
-                                </span>
-                            </li>
-                            <li>
-                                <span class="week-num">Week 3</span>
-                                <span class="checkboxes-with-labels">
-                                    <label onclick="checkNext(event)">1mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">1mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">2mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">2mi:</label>
-                                    <input type="checkbox">
-                                </span>
-                            </li>
-                            <li>
-                                <span class="week-num">Week 4</span>
-                                <span class="checkboxes-with-labels">
-                                    <label onclick="checkNext(event)">2mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">1mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">2mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">2mi:</label>
-                                    <input type="checkbox">
-                                </span>
-                            </li>
-                            <li>
-                                <span class="week-num">Week 5</span>
-                                <span class="checkboxes-with-labels">
-                                    <label onclick="checkNext(event)">2mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">1mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">2mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">3mi:</label>
-                                    <input type="checkbox">
-                                </span>
-                            </li>
-                            <li>
-                                <span class="week-num" style="color:#8b0000;">Week 6</span>
-                                <span class="checkboxes-with-labels">
-                                    <label onclick="checkNext(event)">2mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">2mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">2mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">3mi:</label>
-                                    <input type="checkbox">
-                                </span>
-                            </li>
-                            <li>
-                                <span class="week-num" style="color:#8b0000;">Week 7</span>
-                                <span class="checkboxes-with-labels">
-                                    <label onclick="checkNext(event)">2mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">2mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">2mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">3mi:</label>
-                                    <input type="checkbox">
-                                </span>
-                            </li>
-                            <li>
-                                <span class="week-num">Week 8</span>
-                                <span class="checkboxes-with-labels">
-                                    <label onclick="checkNext(event)">3mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">2mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">3mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">4mi:</label>
-                                    <input type="checkbox">
-                                </span>
-                            </li>
-                            <li>
-                                <span class="week-num">Week 9</span>
-                                <span class="checkboxes-with-labels">
-                                    <label onclick="checkNext(event)">3mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">3mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">3mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">4mi:</label>
-                                    <input type="checkbox">
-                                </span>
-                            </li>
-                            <li>
-                                <span class="week-num">Week 9</span>
-                                <span class="checkboxes-with-labels">
-                                    <label onclick="checkNext(event)">3mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">3mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">3mi:</label>
-                                    <input type="checkbox">
-
-                                    <label onclick="checkNext(event)">5mi:</label>
-                                    <input type="checkbox">
-                                </span>
-                            </li>
+                            {{/each}}
                         </ul>
                     </div>
                 </div>
@@ -444,7 +184,7 @@
                         <ul>
                             <li>
                                 <span class="week-num">Test 1</span>
-                                <a class="fa fa-external-link-square-alt" target="_blank" href="programs/test/week1.html"></a>
+                                <a class="fa fa-play" target="_blank" href="programs/test/week1.html"></a>
                                 <span class="checkboxes">
                                     <input type="checkbox">
                                     <input type="checkbox">
@@ -453,7 +193,7 @@
                             </li>
                             <li>
                                 <span class="week-num">Test 2</span>
-                                <a class="fa fa-external-link-square-alt" target="_blank" href="programs/test/week2.html"></a>
+                                <a class="fa fa-play" target="_blank" href="programs/test/week2.html"></a>
                                 <span class="checkboxes">
                                     <input type="checkbox">
                                     <input type="checkbox">
@@ -474,11 +214,11 @@
     <script src="assets/index.js"></script>
 
     <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js', {
-                scope: 'https://therunner.app'
-            });
-        }
+        // if ('serviceWorker' in navigator) {
+        //     navigator.serviceWorker.register('sw.js', {
+        //         scope: 'https://therunner.app'
+        //     });
+        // }
     </script>
 </body>
 

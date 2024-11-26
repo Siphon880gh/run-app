@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handlebars Rendering</title>
+    <script src="./bower_components/handlebars/handlebars.min.js"></script>
+</head>
+<body>
+    <script>
+    function renderInPlace(data, interchangingEl) {
+        // Compile the template with Handlebars
+        const template = Handlebars.compile(interchangingEl.innerHTML);
+        interchangingEl.innerHTML = template(data);
+        interchangingEl.style.display = "block";
+    }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", ()=>{
+            // Init to be overwritten later
+            var data = [];
+            var el = null;
+
+
+            data = [
+                { name: "Alice", age: 25 },
+                { name: "Bob", age: 30 },
+                { name: "Charlie", age: 35 }
+            ];
+            el = document.getElementById("output");
+            renderInPlace(data, el);
+        })
+    </script>
+    <div id="output" style="display:none;">
+        <ul>
+            {{#each this}}
+            <li>{{name}} - {{age}} years old</li>
+            {{/each}}
+        </ul>
+    </div>
+
+</body>
+</html>

@@ -38,6 +38,11 @@ function checkNext(event) {
     $(event.target).next().prop('checked', !$(event.target).next().prop('checked'))
 }
 
+function checkPrev(event) {
+    $(event.target).prev().prop('checked', !$(event.target).prev().prop('checked'))
+}
+
+
 $(()=>{
     // Some rapid TDD
     // function testSetup(functionName) {
@@ -190,3 +195,22 @@ $(()=>{
         
 
 }); // $(()=>{
+
+
+function renderInPlace(data, interchangingEl) {
+    // Compile the template with Handlebars
+    const template = Handlebars.compile(interchangingEl.innerHTML);
+    interchangingEl.innerHTML = template(data);
+    interchangingEl.style.display = "block";
+}
+Handlebars.registerHelper('times', function (n, block) {
+    let result = '';
+    for (let i = 0; i < n; i++) {
+        result += block.fn(i);
+    }
+    return result;
+});
+
+Handlebars.registerHelper('eq', function(a, b) {
+    return a === b;
+});
